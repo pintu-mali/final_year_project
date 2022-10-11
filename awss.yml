@@ -1,0 +1,13 @@
+- hosts: remote
+  tasks: 
+  - name: downloading cli
+    get_url:
+      url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+      dest: /root/
+  - name: unarchive
+    unarchive:
+      src: /root/awscli-exe-linux-x86_64.zip
+      dest: /root/
+  - name: installing
+    command:
+      cmd: sudo /root/aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update

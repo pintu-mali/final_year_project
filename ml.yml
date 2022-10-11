@@ -1,0 +1,15 @@
+- hosts: vm
+  tasks: 
+  - name: upgrading pip
+    command:
+      cmd: "pip3 install --upgrade pip"
+  - name: downloading ml libraries
+    pip: 
+      name: "{{ item }}"
+      state: present
+    loop: 
+      - keras
+      - pandas
+      - numpy
+      - tensorflow
+      - opencv-python
